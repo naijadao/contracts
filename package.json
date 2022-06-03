@@ -1,11 +1,27 @@
 {
-  "name": "hardhat-project",
+  "name": "NaijaDao",
+  "config": {
+    "network": "rinkeby"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx hardhat compile",
+    "dao-deploy": "npx hardhat run scripts/dao-deploy.js --network $npm_package_config_network",
+    "marketplace-deploy": "npx hardhat run scripts/marketplace-deploy.js --network $npm_package_config_network",
+    "token-deploy": "npx hardhat run scripts/token-deploy.js --network $npm_package_config_network",
+    "dao-verify": "npx hardhat verify --network $npm_package_config_network --constructor-args arguments.js 0x567519017fFa37Ac6179Dbf90Daa741dA3BB34C3",
+    "marketplace-verify": "npx hardhat verify --network $npm_package_config_network --constructor-args arguments.js 0x567519017fFa37Ac6179Dbf90Daa741dA3BB34C3",
+    "token-verify": "npx hardhat verify --network rinkeby 0x209b3EB35AfEF55a4d77510f5F8C46d03A666071"
+  },
   "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.0.6",
-    "@nomiclabs/hardhat-waffle": "^2.0.3",
-    "chai": "^4.3.6",
-    "ethereum-waffle": "^3.4.4",
-    "ethers": "^5.6.6",
-    "hardhat": "^2.9.5"
+    "@nomiclabs/hardhat-ethers": "^2.0.3",
+    "@nomiclabs/hardhat-etherscan": "^2.1.8",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@openzeppelin/contracts": "^4.5.0",
+    "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.5.2",
+    "hardhat": "^2.8.0"
   }
 }
