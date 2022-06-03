@@ -4,10 +4,10 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
 contract KobboToken is ERC20Votes {
-  uint256 public s_maxSupply = 10000000000;
+  uint256 public _maxSupply = 10000000000 * 10 ** 18;
 
   constructor() ERC20("Kobbo Token", "Kobbo") ERC20Permit("KobboToken") {
-    _mint(msg.sender, s_maxSupply);
+    _mint(msg.sender, _maxSupply);
   }
 
   // The functions below are overrides required by Solidity.
