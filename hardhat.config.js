@@ -1,21 +1,44 @@
-require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-waffle")
+require("@nomiclabs/hardhat-etherscan");
 
-// This is a sample Hardhat task. To learn how to create your own go to
-// https://hardhat.org/guides/create-task.html
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
-  const accounts = await hre.ethers.getSigners();
+require('dotenv').config()
+const privateKey = process.env.privateKey;
+const infuraKey = process.env.infuraKey;
+const polygonScanApiKey = process.env.polygonscan_api_key;
+const etherscan_api_key = process.env.etherscan_api_key;
 
-  for (const account of accounts) {
-    console.log(account.address);
-  }
-});
-
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
-
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
 module.exports = {
-  solidity: "0.8.4",
-};
+  defaultNetwork: "hardhat",
+  networks: {
+    localhost: {
+      url: "http://127.0.0.1:8545"
+    },
+    hardhat: {
+      chainId: 1337
+    },
+    rinkeby: {
+      url: `https://rinkeby.infura.io/v3/${infuraKey}`, //Infura url with projectId
+      accounts: [privateKey] // add the account that will deploy the contract (private key)
+    },
+    mumbai: {
+      url: `https://polygon-mumbai.infura.io/v3/${infuraKey}`,
+      accounts: [privateKey]
+    },
+    mainnet: {
+      url: `https://mainnet.infura.io/v3/${infuraKey}`,
+      accounts: [privateKey]
+    },
+  },
+  etherscan: {
+    apiKey: etherscan_api_key
+  },
+  solidity: {
+    version: "0.8.9",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
+  }
+}
