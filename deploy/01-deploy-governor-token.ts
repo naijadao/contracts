@@ -2,6 +2,8 @@ import { HardhatRuntimeEnvironment } from "hardhat/types"
 import { DeployFunction } from "hardhat-deploy/types"
 import verify from "../helper-functions"
 import { networkConfig, developmentChains } from "../helper-hardhat-config"
+
+// @ts-ignore
 import { ethers } from "hardhat"
 
 const deployGovernanceToken: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
