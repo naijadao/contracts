@@ -1,3 +1,5 @@
+
+// @ts-ignore
 import { ethers, network } from "hardhat"
 import {
   developmentChains,
