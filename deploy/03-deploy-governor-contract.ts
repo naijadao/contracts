@@ -14,7 +14,7 @@ const deployGovernorContract: DeployFunction = async function (hre: HardhatRunti
   const { getNamedAccounts, deployments, network } = hre
   const { deploy, log, get } = deployments
   const { deployer } = await getNamedAccounts()
-  const governanceToken = await get("GovernanceToken")
+  const governanceToken = await get("KobboToken")
   const timeLock = await get("TimeLock")
 
   log("----------------------------------------------------")
