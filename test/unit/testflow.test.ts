@@ -1,4 +1,4 @@
-import { GovernorContract, GovernanceToken, TimeLock, Box } from "../../typechain-types"
+import { GovernorContract, KobboToken, TimeLock, Box } from "../../typechain-types"
 import { deployments, ethers } from "hardhat"
 import { assert, expect } from "chai"
 import {
@@ -14,7 +14,7 @@ import { moveTime } from "../../utils/move-time"
 
 describe("Governor Flow", async () => {
   let governor: GovernorContract
-  let governanceToken: GovernanceToken
+  let governanceToken: KobboToken
   let timeLock: TimeLock
   let box: Box
   const voteWay = 1 // for
@@ -23,7 +23,7 @@ describe("Governor Flow", async () => {
     await deployments.fixture(["all"])
     governor = await ethers.getContract("GovernorContract")
     timeLock = await ethers.getContract("TimeLock")
-    governanceToken = await ethers.getContract("GovernanceToken")
+    governanceToken = await ethers.getContract("KobboToken")
     box = await ethers.getContract("Box")
   })
 
