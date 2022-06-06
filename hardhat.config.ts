@@ -7,6 +7,7 @@ import "dotenv/config"
 import "solidity-coverage"
 import "hardhat-deploy"
 import { HardhatUserConfig } from "hardhat/config"
+require("@nomiclabs/hardhat-ganache");
 
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || ""
 const RINKEBY_RPC_URL =
