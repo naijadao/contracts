@@ -8,7 +8,7 @@
     "compile": "npx hardhat compile",
     "dao-deploy": "npx hardhat run scripts/dao-deploy.js --network $npm_package_config_network",
     "marketplace-deploy": "npx hardhat run scripts/marketplace-deploy.js --network $npm_package_config_network",
-    "token-deploy": "npx hardhat run scripts/token-deploy.js --network $npm_package_config_network",
+    "token-deploy": "npx hardhat run deploy/01-deploy-kobbo-token.ts --network $npm_package_config_network",
     "dao-verify": "npx hardhat verify --network $npm_package_config_network --constructor-args arguments.js 0x567519017fFa37Ac6179Dbf90Daa741dA3BB34C3",
     "marketplace-verify": "npx hardhat verify --network $npm_package_config_network --constructor-args arguments.js 0x567519017fFa37Ac6179Dbf90Daa741dA3BB34C3",
     "token-verify": "npx hardhat verify --network rinkeby 0x209b3EB35AfEF55a4d77510f5F8C46d03A666071"
