@@ -55,6 +55,7 @@ async function main() {
   if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
     await verify(kobboToken.address, [])
   }
+
   console.log(`Delegating to ${deployer}`)
   await delegate(kobboToken.address, deployer)
   console.log("Delegated!")
