@@ -52,9 +52,9 @@ async function main() {
   await kobboToken.deployed();
   console.log("Kobbo Token successfully deployed:", kobboToken.address);
 
-  if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
+  /*if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
     await verify(kobboToken.address, [])
-  }
+  }*/
 
   console.log(`Delegating to ${deployer}`)
   await delegate(kobboToken.address, deployer)

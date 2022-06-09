@@ -39,10 +39,6 @@ async function main() {
   await TimeLock.deployed();
   console.log("TimeLock successfully deployed:", TimeLock.address);
 
-  /*if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
-    await verify(TimeLock.address, [MIN_DELAY, proposers, []])
-  }*/
-
 }
 
 main().then(() => process.exit(0)).catch(error => {
