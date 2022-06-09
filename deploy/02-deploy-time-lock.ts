@@ -32,16 +32,16 @@ async function main() {
 
   console.log("----------------------------------------------------")
 
-  const Locker = await hre.ethers.getContractFactory("KobboToken");
+  const Locker = await hre.ethers.getContractFactory("TimeLock");
 
   console.log("Deploying TimeLock and waiting for confirmations...")
   const TimeLock = await Locker.deploy(MIN_DELAY, proposers, []);
   await TimeLock.deployed();
   console.log("TimeLock successfully deployed:", TimeLock.address);
 
-  if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
-    await verify(TimeLock.address, [])
-  }
+  /*if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
+    await verify(TimeLock.address, [MIN_DELAY, proposers, []])
+  }*/
 
 }
 
