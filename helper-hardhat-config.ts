@@ -28,6 +28,7 @@ export const VOTING_PERIOD = 5 // blocks
 export const VOTING_DELAY = 1 // 1 Block - How many blocks till a proposal vote becomes active
 export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000"
 export const deployer = "0x26B3bAC0Cf02F619166Bc7457bA25443ccb026a3"
+export const proposers = ["0x26B3bAC0Cf02F619166Bc7457bA25443ccb026a3"]
 
 export const NEW_STORE_VALUE = 77
 export const FUNC = "store"
