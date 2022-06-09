@@ -45,13 +45,6 @@ async function main() {
 
 }
 
-const delegate = async (kobboTokenAddress: string, delegatedAccount: string) => {
-  const governanceToken = await ethers.getContractAt("KobboToken", kobboTokenAddress)
-  const transactionResponse = await governanceToken.delegate(delegatedAccount)
-  await transactionResponse.wait(1)
-  console.log(`Checkpoints: ${await governanceToken.numCheckpoints(delegatedAccount)}`)
-}
-
 main().then(() => process.exit(0)).catch(error => {
   console.error(error);
   process.exit(1);
