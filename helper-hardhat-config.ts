@@ -35,3 +35,6 @@ export const proposers = ["0x26B3bAC0Cf02F619166Bc7457bA25443ccb026a3"]
 export const NEW_STORE_VALUE = 77
 export const FUNC = "store"
 export const PROPOSAL_DESCRIPTION = "Proposal #1 77 in the Box!"
+
+export const GOVERNANCE_TOKEN_ADDRESS = "0x86D6c32b55FD7E38d8a87b518466F51A749cD960"
+export const TIMELOCK_ADDRESS = "0x2020a989d2D55A788CE036aFED2bd639Ec5BC5ab"
