@@ -1,42 +1,32 @@
-import { HardhatRuntimeEnvironment } from "hardhat/types"
-import { DeployFunction } from "hardhat-deploy/types"
-import verify from "../helper-functions"
 import {
-  networkConfig,
-  developmentChains,
   QUORUM_PERCENTAGE,
   VOTING_PERIOD,
   VOTING_DELAY,
+  GOVERNANCE_TOKEN_ADDRESS,
+  TIMELOCK_ADDRESS,
 } from "../helper-hardhat-config"
+import hre from "hardhat";
 
-const deployGovernorContract: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
-  // @ts-ignore
-  const { getNamedAccounts, deployments, network } = hre
-  const { deploy, log, get } = deployments
-  const { deployer } = await getNamedAccounts()
-  const governanceToken = await get("KobboToken")
-  const timeLock = await get("TimeLock")
 
-  log("----------------------------------------------------")
-  log("Deploying GovernorContract and waiting for confirmations...")
-  const governorContract = await deploy("GovernorContract", {
-    from: deployer,
-    args: [
-      governanceToken.address,
-      timeLock.address,
+async function main() {
+
+  console.log("----------------------------------------------------")
+
+  const GovernorContract = await hre.ethers.getContractFactory("GovernorContract");
+
+  console.log("Deploying Governor contract and waiting for confirmations...")
+  const Governor = await GovernorContract.deploy(
+      GOVERNANCE_TOKEN_ADDRESS,
+      TIMELOCK_ADDRESS,
       QUORUM_PERCENTAGE,
       VOTING_PERIOD,
-      VOTING_DELAY,
-    ],
-    log: true,
-    // we need to wait if on a live network so we can verify properly
-    waitConfirmations: networkConfig[network.name].blockConfirmations || 1,
-  })
-  log(`GovernorContract at ${governorContract.address}`)
-  if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
-    await verify(governorContract.address, [])
-  }
+      VOTING_DELAY);
+  await Governor.deployed();
+  console.log("Governor successfully deployed:", Governor.address);
+
 }
 
-export default deployGovernorContract
-deployGovernorContract.tags = ["all", "governor"]
+main().then(() => process.exit(0)).catch(error => {
+  console.error(error);
+  process.exit(1);
+});
