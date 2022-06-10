@@ -20,4 +20,9 @@ contract Box is Ownable {
   function retrieve() public view returns (uint256) {
     return value;
   }
+
+  function version() public virtual pure returns (string memory) {
+    return "1.0.";
+  }
+
 }
