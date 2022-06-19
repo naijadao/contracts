@@ -27,7 +27,7 @@ contract Box is Ownable, Initializable {
   }
 
   function version() public virtual pure returns (string memory) {
-    return "1.0.";
+    return "1.0.0";
   }
 
 }
