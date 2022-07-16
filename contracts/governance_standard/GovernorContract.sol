@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/governance/Governor.sol";
 import "@openzeppelin/contracts/governance/extensions/GovernorCountingSimple.sol";
@@ -9,12 +9,12 @@ import "@openzeppelin/contracts/governance/extensions/GovernorTimelockControl.so
 import "@openzeppelin/contracts/governance/extensions/GovernorSettings.sol";
 
 contract GovernorContract is
-  Governor,
-  GovernorSettings,
-  GovernorCountingSimple,
-  GovernorVotes,
-  GovernorVotesQuorumFraction,
-  GovernorTimelockControl
+Governor,
+GovernorSettings,
+GovernorCountingSimple,
+GovernorVotes,
+GovernorVotesQuorumFraction,
+GovernorTimelockControl
 {
   constructor(
     IVotes _token,
@@ -23,31 +23,31 @@ contract GovernorContract is
     uint256 _votingPeriod,
     uint256 _votingDelay
   )
-    Governor("GovernorContract")
-    GovernorSettings(
-      _votingDelay, /* 1 block */ // votind delay
-      _votingPeriod, // 45818, /* 1 week */ // voting period
-      0 // proposal threshold
-    )
-    GovernorVotes(_token)
-    GovernorVotesQuorumFraction(_quorumPercentage)
-    GovernorTimelockControl(_timelock)
+  Governor("GovernorContract")
+  GovernorSettings(
+    _votingDelay, /* 1 block */ // votind delay
+    _votingPeriod, // 45818, /* 1 week */ // voting period
+    0 // proposal threshold
+  )
+  GovernorVotes(_token)
+  GovernorVotesQuorumFraction(_quorumPercentage)
+  GovernorTimelockControl(_timelock)
   {}
 
   function votingDelay()
-    public
-    view
-    override(IGovernor, GovernorSettings)
-    returns (uint256)
+  public
+  view
+  override(IGovernor, GovernorSettings)
+  returns (uint256)
   {
     return super.votingDelay();
   }
 
   function votingPeriod()
-    public
-    view
-    override(IGovernor, GovernorSettings)
-    returns (uint256)
+  public
+  view
+  override(IGovernor, GovernorSettings)
+  returns (uint256)
   {
     return super.votingPeriod();
   }
@@ -55,28 +55,28 @@ contract GovernorContract is
   // The following functions are overrides required by Solidity.
 
   function quorum(uint256 blockNumber)
-    public
-    view
-    override(IGovernor, GovernorVotesQuorumFraction)
-    returns (uint256)
+  public
+  view
+  override(IGovernor, GovernorVotesQuorumFraction)
+  returns (uint256)
   {
     return super.quorum(blockNumber);
   }
 
   function getVotes(address account, uint256 blockNumber)
-    public
-    view
-    override(IGovernor, Governor)
-    returns (uint256)
+  public
+  view
+  override(IGovernor, Governor)
+  returns (uint256)
   {
     return super.getVotes(account, blockNumber);
   }
 
   function state(uint256 proposalId)
-    public
-    view
-    override(Governor, GovernorTimelockControl)
-    returns (ProposalState)
+  public
+  view
+  override(Governor, GovernorTimelockControl)
+  returns (ProposalState)
   {
     return super.state(proposalId);
   }
@@ -91,10 +91,10 @@ contract GovernorContract is
   }
 
   function proposalThreshold()
-    public
-    view
-    override(Governor, GovernorSettings)
-    returns (uint256)
+  public
+  view
+  override(Governor, GovernorSettings)
+  returns (uint256)
   {
     return super.proposalThreshold();
   }
@@ -119,19 +119,19 @@ contract GovernorContract is
   }
 
   function _executor()
-    internal
-    view
-    override(Governor, GovernorTimelockControl)
-    returns (address)
+  internal
+  view
+  override(Governor, GovernorTimelockControl)
+  returns (address)
   {
     return super._executor();
   }
 
   function supportsInterface(bytes4 interfaceId)
-    public
-    view
-    override(Governor, GovernorTimelockControl)
-    returns (bool)
+  public
+  view
+  override(Governor, GovernorTimelockControl)
+  returns (bool)
   {
     return super.supportsInterface(interfaceId);
   }
