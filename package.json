@@ -10,11 +10,9 @@
     "timelock-deploy": "npx hardhat run deploy/02-deploy-time-lock.ts --network $npm_package_config_network",
     "governor-deploy": "npx hardhat run deploy/03-deploy-governor-contract.ts --network $npm_package_config_network",
     "governance-roles-setup-deploy": "npx hardhat run deploy/04-setup-governance-contracts.ts --network $npm_package_config_network",
-    "box-deploy": "npx hardhat run deploy/05-deploy-box.ts --network $npm_package_config_network",
     "token-verify": "npx hardhat verify --network rinkeby 0x86D6c32b55FD7E38d8a87b518466F51A749cD960",
     "timelock-verify": "npx hardhat verify --contract contracts/governance_standard/TimeLock.sol:TimeLock --network $npm_package_config_network --constructor-args arguments/timelock.ts 0x2020a989d2D55A788CE036aFED2bd639Ec5BC5ab",
     "governor-verify": "npx hardhat verify --network $npm_package_config_network --constructor-args arguments/governor.ts 0xa9596A8c4e7CB8C621fC806B9551B79d6760056f",
-    "box-verify": "npx hardhat verify --network $npm_package_config_network 0xCa615c8A08E3d907D5fB115DC962734288CB6821"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.12",
