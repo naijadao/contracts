@@ -36,3 +36,4 @@ contract KobboToken is ERC20Votes {
   function _burn(address account, uint256 amount) internal override(ERC20Votes) {
     super._burn(account, amount);
   }
+}
